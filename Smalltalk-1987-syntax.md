@@ -29,7 +29,7 @@ Smalltalk-80 is a trademark of ParcPlace Systems.
 
 Syntax equations are given in BNF extended with these constructs:
 
-```text
+```smalltalk
 [x]  optional x
 x*   zero or more occurrences of x
 x+   one or more occurrences of x
@@ -89,7 +89,7 @@ The ISO character set differs from ASCII and redefines certain ASCII characters 
 
 The lexical syntax is formally ambiguous: for example, `abc:` can be parsed either as an identifier followed by a non-quote character, or as a keyword. The ambiguity is resolved in all cases in favor of the longest token that can be formed starting at a given point in the source text. Thus `abc:` is always considered a keyword if `a` begins the token. The definition of token is supplied only for exposition.
 
-```text
+```smalltalk
 token = number | identifier | special-character | keyword |
         block-argument | assignment-operator | binary-selector |
         character-constant | string
@@ -156,7 +156,7 @@ Errors in the Blue Book have been corrected, and the two-character limit on the 
 
 ### Atomic Terms
 
-```text
+```smalltalk
 named-constant = 'nil' | 'true' | 'false'
 symbol-constant = '#' (symbol | string)
 array-constant = '#' '(' literal* ')'
@@ -170,7 +170,7 @@ The new syntax for array constants is simpler to explain than the present Smallt
 
 ### Expressions and Statements
 
-```text
+```smalltalk
 primary = variable-name | pseudo-variable-name | literal |
           block-constructor | subexpression
 pseudo-variable-name = 'self' | 'thisContext'
@@ -235,7 +235,7 @@ temp |
 
 ### Methods
 
-```text
+```smalltalk
 message-pattern = unary-selector |
                   binary-selector declared-variable-name |
                   (keyword declared-variable-name)+
@@ -273,7 +273,7 @@ The superclass specified for a class may be another `Behavior` or `nil`. The lat
 
 The syntax of the string supplied to describe the instance variables is:
 
-```text
+```smalltalk
 inst-var-names = declared-variable-name* [indexed-refs] |
                  indexed-bytes
 indexed-refs = '*' 'Object'
@@ -286,7 +286,7 @@ Thus a class may contain named instance variables holding object references, ind
 
 The form in which Smalltalk programs are stored on external files is defined in Chapter 3 (pp. 29–37) of the Green Book, not the Blue Book. This proposal standardizes enough of the external format that program files can be parsed even by systems unable to interpret all their contents. In the syntax equations below, separators are **not** implicitly allowed between elements; the equations must be taken exactly as they appear.
 
-```text
+```smalltalk
 marker = '!'
 non-marker = any character except the marker
 separators = non-printing-character*
@@ -346,7 +346,7 @@ The messages below are the proposed absolute minimum for language support. The m
 
 **Arithmetic**
 
-```text
+```smalltalk
 P (Integer) + - * / < > <= >= = ~= (Integer, Float)
 P (Integer) // \\ (Integer)
 P (Integer) / (Float)
@@ -355,7 +355,7 @@ P (Float) + - * / < > <= >= = ~= (Integer, Float)
 
 **Control**
 
-```text
+```smalltalk
 P (Block) value
 P (Block) value: (Object)
 F (Block) whileTrue: (Block)
@@ -375,7 +375,7 @@ F (True, False) or: (Block)
 
 **Miscellaneous**
 
-```text
+```smalltalk
 F (Object) == (Object)
 ```
 
@@ -434,7 +434,7 @@ The following syntax is the one that appears on the endpaper of the Blue Book, s
 
 ### Lexical Primitives
 
-```text
+```smalltalk
 digit = '0' | ... | '9'
 digits = digit+
 number = [digits 'r'] ['-'] digits [',' digits] ['e' ['-'] digits]
@@ -460,7 +460,7 @@ There does not appear to be a good reason for limiting the length of binary sele
 
 ### Atomic Terms
 
-```text
+```smalltalk
 symbol-constant = '#' symbol
 array = '(' (number | symbol | string | character-constant | array)* ')'
 array-constant = '#' array
@@ -470,7 +470,7 @@ variable-name = identifier
 
 ### Expressions and Statements
 
-```text
+```smalltalk
 primary = variable-name | literal | block | '(' expression ')'
 unary-object-description = primary | unary-expression
 binary-object-description = unary-object-description | binary-expression
@@ -490,7 +490,7 @@ block = '[' [ (':' variable-name)+ '|' statements | statements ] ']'
 
 ### Methods
 
-```text
+```smalltalk
 temporaries = '|' variable-name* '|'
 message-pattern = unary-selector | binary-selector variable-name |
                   (keyword variable-name)+
